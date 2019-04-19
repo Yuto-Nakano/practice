@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="reset.css">
+	<title>dotinstall_1</title>
+</head>	
+<style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background:skyblue;
+        cursor:pointer;
+    }
+    .circle{
+        border-radius: 50%;
+        background: pink;
+        transform: rotate(360deg);
+        transition:1s;
+    }
+</style>
+<body>
+		<div id="target" class="box"></div>
+</body>
+
+</html>
+<script>
+    'use strict';
+    document.getElementById("target").addEventListener("click",function(){
+        // document.getElementById("target").style.background = "pink";
+        // this.style.borderRadius = "50%";
+        document.getElementById("target").classList.add("circle");
+    });
+</script>
