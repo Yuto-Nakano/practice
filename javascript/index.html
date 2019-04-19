@@ -10,29 +10,60 @@
 	<title>dotinstall_1</title>
 </head>	
 <style>
+body{
+    display: flex;
+    flex-wrap:wrap;
+}
     .box{
         width: 100px;
         height: 100px;
         background:skyblue;
         cursor:pointer;
+        transition:1s;
+        margin: 0px 8px 8px 0;
+        text-align: center;
+        line-height:100px;
     }
-    .circle{
+    .win{
         border-radius: 50%;
         background: pink;
         transform: rotate(360deg);
         transition:1s;
     }
+    .lose{
+        transform:scale(0.9);
+    }
 </style>
 <body>
-		<div id="target" class="box"></div>
 </body>
 
 </html>
 <script>
     'use strict';
-    document.getElementById("target").addEventListener("click",function(){
-        // document.getElementById("target").style.background = "pink";
-        // this.style.borderRadius = "50%";
-        document.getElementById("target").classList.add("circle");
-    });
+   const num = 5;
+   const winner =Math.floor(Math.random()*5+1);
+   console.log(winner);
+    for(let i = 1;i<=num;i++){
+        const div = document.createElement('div');
+        div.classList.add("box");
+        div.textContent = i;
+        if(winner === i){
+            div.dataset.result = "win";
+        }else{
+            div.dataset.result = "lose";
+        }
+        div.addEventListener("click",function(){
+            div.classList.toggle("circle");
+            if(div.dataset.result === "win"){
+                div.textContent  = "win";
+                div.classList.add("win")
+            }else{
+                div.textContent = "lose";
+                div.classList.add("lose");
+            }
+        });
+
+        document.body.appendChild(div);
+    }
+   
 </script>
