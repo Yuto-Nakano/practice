@@ -4,23 +4,23 @@
         "apple","middle","action","speaks","louder","than","words"
     ]
     let word = words[Math.floor(Math.random() * words.length)];
-    let loc = 0;
-    let score = 0;
-    let miss = 0;
+    let loc ;
+    let score; 
+    let miss ;
     let isPlaying = false;
     const target = document.getElementById("target");
     const scoreLabel = document.getElementById("score");
     const missLabel = document.getElementById("miss");
     const timeLabel = document.getElementById("time");
-    const timeLimit = 3 * 1000;
-    let startTime = "";
+    const timeLimit = 10 * 1000;
+    let startTime ;
 
 
     window.addEventListener("click",() => {
       if(isPlaying === true){
           return;
       }
-        resetScore();
+        resetAll();
         isPlaying = true;
         updateTarget();
         startTime = Date.now();
@@ -48,7 +48,6 @@
             timeLabel.textContent = 0.00;
             setTimeout(() => {
                 showResult();
-                loc = 0;
             },100)
             isPlaying = false;
             target.textContent = "click to start again";
@@ -83,8 +82,10 @@
         window.alert(`Yourscore: ${score} , Yourmiss: ${miss} , 正答率${accuracy.toFixed(2)}%`);
     }
 
-    function resetScore(){
+    function resetAll(){
+        loc = 0;
         score = 0;
         miss = 0;
+        word = words[Math.floor(Math.random() * words.length)];
     }
 }
